@@ -1,20 +1,18 @@
 FROM moxventura/chrome-headless-browser:latest
 
-MAINTAINER Albert Yu <yukinying@gmail.com>
+MAINTAINER Jesper Jeeninga <jeeninga@gmail.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 USER root
 
-RUN mkdir -p /usr/share/man/man1 \
-  # && echo "deb https://deb.debian.org/debian jessie-backports main" >> /etc/apt/sources.list.d/jessie-backports.list \
-  && echo "deb http://http.debian.net/debian jessie-backports main" >> /etc/apt/sources.list.d/jessie-backports.list \
-  && apt-get update -qqy \
-  && apt-get -qqy --no-install-recommends install \
-    -t jessie-backports openjdk-8-jre-headless \
-    unzip \
-    wget \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+#======
+# Java
+#======
+
+RUN apt-get update -qqy \
+  && apt-get install -qqy \
+  openjdk-8-jre-headless
 
 #==========
 # Selenium
