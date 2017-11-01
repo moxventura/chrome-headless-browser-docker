@@ -1,5 +1,5 @@
-FROM debian:stable-slim
-# FROM ubuntu:xenial
+# FROM debian:stable-slim
+FROM ubuntu:xenial
 # FROM google/debian:jessie
 
 MAINTAINER Albert Yu <yukinying@gmail.com>
