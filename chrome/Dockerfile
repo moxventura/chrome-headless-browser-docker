@@ -2,15 +2,18 @@
 FROM ubuntu:xenial
 # FROM google/debian:jessie
 
-MAINTAINER Albert Yu <yukinying@gmail.com>
+MAINTAINER Jesper Jeeninga <j.jeeninga@gmail.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -qqy \
   && apt-get -qqy install \
-       dumb-init gnupg wget ca-certificates apt-transport-https \
+       gnupg wget ca-certificates apt-transport-https \
        ttf-wqy-zenhei \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64.deb
+RUN dpkg -i dumb-init_*.deb
 
 RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
   && echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
