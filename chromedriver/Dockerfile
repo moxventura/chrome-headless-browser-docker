@@ -12,7 +12,8 @@ USER root
 
 RUN apt-get update -qqy \
   && apt-get install -qqy \
-  openjdk-8-jre-headless
+  openjdk-8-jre-headless \
+  unzip
 
 #==========
 # Selenium
